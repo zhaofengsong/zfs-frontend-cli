@@ -8,7 +8,7 @@
 
 ## init
 
-- zfs-frontend-cli create my-project
+- zfs-cli create my-project
 
 ## dev
 

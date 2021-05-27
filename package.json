@@ -1,10 +1,10 @@
 {
   "name": "zfs-frontend-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "bin": {
-    "zfs-frontend-cli": "./bin/cli.js"
+    "zfs-cli": "./bin/cli.js"
   },
   "files": [
     "bin",
