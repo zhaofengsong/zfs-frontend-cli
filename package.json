@@ -1,19 +1,17 @@
 {
   "name": "zfs-frontend-cli",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
+  "main": "index.js",
   "bin": {
     "zfs-frontend-cli": "./bin/cli.js"
   },
-  "author": "Zhao FengSong",
-  "license": "MIT",
   "files": [
     "bin",
     "lib"
   ],
-  "keywords": [
-    "zfs-frontend-cli"
-  ],
+  "author": "zhaofengsong",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "chalk": "^4.1.1",

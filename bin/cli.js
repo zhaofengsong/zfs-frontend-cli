@@ -1,10 +1,17 @@
-#! /d/packages/node
+#! /usr/bin/env node
 
-const program = require('commander')
-const chalk = require('chalk')
-const figlet = require('figlet')
+const program = require('commander');
+const figlet = require('figlet');
+const chalk = require('chalk');
 
-console.log(chalk.green('zfs-frontend-cli start working ~'));
+program
+    .command('create <app-name>')
+    .description('create a new project')
+    .option('-f, --force', 'overwrite target directory if it exist') // 是否强制创建，当文件夹已经存在
+    .action((name, options) => {
+        // 在 create.js 中执行创建任务
+        require('../lib/create.js')(name, options)
+    })
 
 // 配置 config 命令
 program
@@ -26,43 +33,22 @@ program
         console.log(option)
     })
 
-
-// 定义命令和参数
 program
-    .command('create <app-name>')
-    .description('create a new project')
-    // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
-    .option('-f, --force', 'overwrite target directory if it exist')
-    .action((name, options) => {
-        // 打印执行结果
-        // console.log('name:', name, 'options:', options)
-        // 在 create.js 中执行创建任务
-        require('../lib/create.js')(name, options)
-    })
-
-
-// 配置版本号信息
-program
+    // 配置版本号信息
     .version(`v${require('../package.json').version}`)
     .usage('<command> [option]')
 
-// 监听 --help 执行
 program
     .on('--help', () => {
-        // 使用 figlet 绘制 Logo
-        console.log('\r\n' + figlet.textSync('zfs', {
+        console.log('\r\n' + figlet.textSync('zfs-frontend-cli', {
             font: 'Ghost',
             horizontalLayout: 'default',
             verticalLayout: 'default',
             width: 80,
             whitespaceBreak: true
         }));
-        // 新增说明信息
-        console.log(`\r\nRun ${chalk.cyan(`roc <command> --help`)} show details\r\n`)
+        console.log(`\r\nRun ${chalk.cyan(`zfs-frontend-cli <command> --help`)} for detailed usage of given command\r\n`)
     })
 
 // 解析用户执行命令传入参数
 program.parse(process.argv);
-
-
-
